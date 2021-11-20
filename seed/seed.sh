@@ -6,9 +6,9 @@
 set -euo pipefail
 
 echo "Finding the DynamoDB table name ..."
-DDB_TABLE_NAME=$(copilot svc show --json | jq -r '.variables[] | select(.name == "ITEMS_NAME") | .value')
+DDB_TABLE_NAME=$(C:/Users/MikaelJohansson/source/repos/AWS/hello-app-runner-nodejs/copilot-windows svc show --json | jq -r '.variables[] | select(.name == "ITEMS_NAME") | .value')
 echo "DynamoDB table name: ${DDB_TABLE_NAME}"
-DATA=$(sed "s/TABLE_NAME/${DDB_TABLE_NAME}/g" < ./seed/data.json)
+DATA=$(sed "s/TABLE_NAME/${DDB_TABLE_NAME}/g" < C:/Users/MikaelJohansson/source/repos/AWS/hello-app-runner-nodejs/seed/data.json)
 
 echo "Seeding initial data to the DynamoDB table ..."
 RESULT=$(aws dynamodb batch-write-item --request-items "${DATA}")
